@@ -1,5 +1,6 @@
 package com.greatLearning.employeeService.util;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
@@ -17,10 +18,12 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @RequiredArgsConstructor
 public class BootStrapAppData {
-	
-	private final EmployeeRepository employeeRepository;
-	private final UserRepository userRepository;
-	private final PasswordEncoder passwordEncoder;
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void insertEmployees(ApplicationReadyEvent event) {
@@ -41,10 +44,11 @@ public class BootStrapAppData {
 		vinay.setUsername("vinay");
 		vinay.setPassword(this.passwordEncoder.encode("admin"));
 		vinay.setEmailAddress("vinay@gmail.com");
+		this.userRepository.save(vinay);
 		
 		
 		Role userRole = new Role();
-		userRole.setRoleName("USER");
+		userRole.setRoleName("ADMIN");
 		userRole.setUser(vinay);
 		
 	}

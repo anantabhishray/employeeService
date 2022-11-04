@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.greatLearning.employeeService.entity.Employee;
+import com.greatLearning.employeeService.entity.Role;
+import com.greatLearning.employeeService.entity.User;
 //import com.greatLearning.employeeService.entity.Role;
 //import com.greatLearning.employeeService.entity.User;
 import com.greatLearning.employeeService.service.EmployeeService;
@@ -32,16 +34,18 @@ public class EmployeeRestController {
 	public EmployeeRestController(EmployeeService theEmployeeService) {
 		employeeService = theEmployeeService;
 	}
-//
+
 //	@PostMapping("/user")
 //	public User saveUser(@RequestBody User user) {
-//		return employeeService.saveUser(user);
+//		employeeService.saveUser(user);
+//		return user;
 //	}
 //
 //	@PostMapping("/role")
 //	public Role saveRole(@RequestBody Role role) {
 //		return employeeService.saveRole(role);
 //	}
+
 
 	// expose "/employees" and return list of employees
 	@GetMapping("/employees")
@@ -75,7 +79,7 @@ public class EmployeeRestController {
 		// also just in case they pass an id in JSON ... set id to 0
 		// this is to force a save of new item ... instead of update
 
-		theEmployee.setId(0);
+//		theEmployee.setId(0);
 
 		employeeService.save(theEmployee);
 

@@ -3,8 +3,8 @@ package com.greatLearning.employeeService.service;
 import java.util.List;
 
 import com.greatLearning.employeeService.entity.Employee;
-//import com.greatLearning.employeeService.entity.Role;
-//import com.greatLearning.employeeService.entity.User;
+import com.greatLearning.employeeService.entity.Role;
+import com.greatLearning.employeeService.entity.User;
 
 public interface EmployeeService {
 
@@ -20,6 +20,6 @@ public interface EmployeeService {
 	
 	public List<Employee> sortByFirstNameAsc();
 	
-//	public User saveUser(User user);
-//	public Role saveRole(Role role);
+	public User saveUser(User user);
+	public Role saveRole(Role role);
 }
